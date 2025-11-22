@@ -1,0 +1,20 @@
+.div__task-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  .div__input-task {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,44 @@
+<div class="div__task-form">
+
+  <fieldset>
+    <legend>ToDo Form</legend>
+
+    <form class="task-form">
+      <div class="div__input-task">
+        <label for="title-task">Titre de la tâche</label>
+        <input type="text" id="title-task" [(ngModel)]="todoTitle" [ngModelOptions]="{standalone: true}"> <!-- indiquer la variable que le ngmodel ecoute-->
+      </div>
+      @if (todoTitleError) {
+        <span> {{todoTitleError}} </span>
+      }
+
+      <div class="div__input-task">
+        <label for="description-task">Description de la tâche</label>
+        <textarea
+          type="text"
+          id="description-task"
+          [(ngModel)]="todoDescription"
+          [ngModelOptions]="{standalone: true}"
+        ></textarea>
+
+      </div>
+
+      <pre>
+        {{todoTitle}}
+
+        {{todoDescription}}
+      </pre>
+
+      <button (click)="onSaveTask()">Enregistrer</button>
+    </form>
+
+  </fieldset>
+
+</div>
+
+
+<!--
+  [] property binding
+  () event binding
+  [()] two way binding
+-->
