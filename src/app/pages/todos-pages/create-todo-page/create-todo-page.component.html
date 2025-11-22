@@ -2,34 +2,28 @@
 
   <fieldset>
     <legend>ToDo Form</legend>
-
-    <form class="task-form">
+    <form class="task-form" [formGroup]="todoForm"> <!-- 2e etape : cibler la balise parent de mon formulaire -->
       <div class="div__input-task">
         <label for="title-task">Titre de la tâche</label>
-        <input type="text" id="title-task" [(ngModel)]="todoTitle" [ngModelOptions]="{standalone: true}"> <!-- indiquer la variable que le ngmodel ecoute-->
+        <input type="text" id="title-task" formControlName="todoTitle"> <!-- 4e etape : le binding par le formControleName-->
       </div>
-      @if (todoTitleError) {
-        <span> {{todoTitleError}} </span>
+      @if (todoForm.controls.todoTitle.errors && todoForm.controls.todoTitle.errors['required'] && todoForm.controls.todoTitle.dirty) {
+        <span> Champ obligatoire</span>
+      }
+      @if (todoForm.controls.todoTitle.errors && todoForm.controls.todoTitle.errors['minlength'] && todoForm.controls.todoTitle.dirty) {
+        <span>Caractères minimum est de 5</span>
       }
 
       <div class="div__input-task">
         <label for="description-task">Description de la tâche</label>
-        <textarea
-          type="text"
-          id="description-task"
-          [(ngModel)]="todoDescription"
-          [ngModelOptions]="{standalone: true}"
-        ></textarea>
-
+        <textarea type="text" id="description-task" formControlName="todoDescription"></textarea>
       </div>
+      @if (todoForm.controls.todoDescription.invalid && todoForm.controls.todoDescription.dirty) {
+        <span>Erreur description</span>
+      }
 
-      <pre>
-        {{todoTitle}}
-
-        {{todoDescription}}
-      </pre>
-
-      <button (click)="onSaveTask()">Enregistrer</button>
+      <!-- <pre> Todo form {{todoForm.invalid }}</pre> -->
+      <button [disabled]="todoForm.invalid" (click)="onSaveTask()">Enregistrer</button> <!-- On peut binder 95% des attributs html-->
     </form>
 
   </fieldset>
