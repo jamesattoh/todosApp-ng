@@ -1,0 +1,15 @@
+<div class="authenfication">
+  <fieldset>
+    <legend> Authentification </legend>
+    <form [formGroup]="authentificationForm">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" formControlName="email">
+
+      <label for="password">Mot de passe</label>
+      <input type="password" name="password" id="password" formControlName="password">
+
+      <button (click)="submitAuthentificationForm()"> Inscription </button>
+    </form>
+  </fieldset>
+
+</div>

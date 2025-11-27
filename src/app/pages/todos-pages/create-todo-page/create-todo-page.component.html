@@ -8,10 +8,10 @@
         <input type="text" id="title-task" formControlName="todoTitle"> <!-- 4e etape : le binding par le formControleName-->
       </div>
       @if (todoForm.controls.todoTitle.errors && todoForm.controls.todoTitle.errors['required'] && todoForm.controls.todoTitle.dirty) {
-        <span> Champ obligatoire</span>
+        <span class="span__error"> Champ obligatoire.</span>
       }
       @if (todoForm.controls.todoTitle.errors && todoForm.controls.todoTitle.errors['minlength'] && todoForm.controls.todoTitle.dirty) {
-        <span>Caractères minimum est de 5</span>
+        <span class="span__error">Caractère minimum est de 5.</span>
       }
 
       <div class="div__input-task">
@@ -19,7 +19,7 @@
         <textarea type="text" id="description-task" formControlName="todoDescription"></textarea>
       </div>
       @if (todoForm.controls.todoDescription.invalid && todoForm.controls.todoDescription.dirty) {
-        <span>Erreur description</span>
+        <span class="span__error">La description est obligatoire.</span>
       }
 
       <!-- <pre> Todo form {{todoForm.invalid }}</pre> -->
