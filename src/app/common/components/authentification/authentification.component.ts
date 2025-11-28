@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, input} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
@@ -10,6 +10,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
   styleUrl: './authentification.component.scss'
 })
 export class AuthentificationComponent {
+  // rendons dynamique le titre du formulaire
+  readonly formTitle = input.required<'Connexion' | 'Inscription'>();
 
   // representation objet de mon formulaire
   protected authentificationForm = new FormGroup({

@@ -1,0 +1,19 @@
+.authentification-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.authentification-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    .div__input-authentification {
+      display: flex;
+      flex-direction: column;
+    }
+}

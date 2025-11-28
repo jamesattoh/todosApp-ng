@@ -1,14 +1,20 @@
-<div class="authenfication">
+<div class="authentification-container">
   <fieldset>
-    <legend> Authentification </legend>
-    <form [formGroup]="authentificationForm">
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" formControlName="email">
+    <legend> {{ formTitle() }} </legend>
+    <form [formGroup]="authentificationForm" class="authentification-form">
+      <div class="div__input-authentification">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" formControlName="email">
+      </div>
 
-      <label for="password">Mot de passe</label>
-      <input type="password" name="password" id="password" formControlName="password">
+      <div class="div__input-authentification">
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password" formControlName="password">
+      </div>
 
-      <button (click)="submitAuthentificationForm()"> Inscription </button>
+      <button (click)="submitAuthentificationForm()">
+        {{ formTitle() === 'Connexion' ? 'Se connecter' : 'S\'inscrire' }}
+      </button>
     </form>
   </fieldset>
 
