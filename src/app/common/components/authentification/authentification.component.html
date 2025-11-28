@@ -6,11 +6,27 @@
         <label for="email">Email</label>
         <input type="email" name="email" id="email" formControlName="email">
       </div>
+      @if (authentificationForm.controls.email.dirty && authentificationForm.controls.email.errors && authentificationForm.controls.email.errors['required']) {
+        <span class="span__error">Champ obligatoire.</span>
+      }
+      @if (authentificationForm.controls.email.dirty && authentificationForm.controls.email.errors && authentificationForm.controls.email.errors['email']) {
+        <span class="span__error">Email invalide.</span>
+      }
 
       <div class="div__input-authentification">
         <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" formControlName="password">
+        <input [type]="passwordType" name="password" id="password" formControlName="password">
+
+        <span class="span__shown-password" (click)="togglePasswordVisibility()">
+          {{ passwordType == 'password' ? 'Afficher' : 'Masquer' }}
+        </span>
       </div>
+      @if (authentificationForm.controls.password.dirty && authentificationForm.controls.password.errors && authentificationForm.controls.password.errors['required']) {
+        <span class="span__error">Champ obligatoire.</span>
+      }
+      @if (authentificationForm.controls.password.dirty && authentificationForm.controls.password.errors && authentificationForm.controls.password.errors['minlength']) { <!--tout en minuscule entre les []-->
+        <span class="span__error">Le mote de passe doit avoir au minimum huit (08) caractères.</span>
+      }
 
       <button (click)="submitAuthentificationForm()">
         {{ formTitle() === 'Connexion' ? 'Se connecter' : 'S\'inscrire' }}
@@ -19,3 +35,4 @@
   </fieldset>
 
 </div>
+

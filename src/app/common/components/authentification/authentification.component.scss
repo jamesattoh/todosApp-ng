@@ -15,5 +15,15 @@
     .div__input-authentification {
       display: flex;
       flex-direction: column;
+
+      .span__shown-password {
+        display: block;
+        position: absolute;
+        margin-left: 14%;
+        margin-top: 3px;
+        font-size: small;
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
 }
