@@ -28,7 +28,7 @@
         <span class="span__error">Le mote de passe doit avoir au minimum huit (08) caractères.</span>
       }
 
-      <button (click)="submitAuthentificationForm()">
+      <button [disabled]="authentificationForm.invalid" (click)="submitAuthentificationForm()">
         {{ formTitle() === 'Connexion' ? 'Se connecter' : 'S\'inscrire' }}
       </button>
     </form>

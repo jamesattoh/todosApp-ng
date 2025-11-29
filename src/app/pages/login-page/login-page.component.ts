@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import {AuthentificationComponent} from '../../common/components/authentification/authentification.component';
+import {
+  AuthentificationComponent,
+  authentificationFormValuesType
+} from '../../common/components/authentification/authentification.component';
 
 @Component({
   selector: 'app-login-page',
@@ -10,5 +13,7 @@ import {AuthentificationComponent} from '../../common/components/authentificatio
   styleUrl: './login-page.component.scss'
 })
 export class LoginPageComponent {
-
+    public onLogin(authentificationFormValues: authentificationFormValuesType): void {
+      console.log(authentificationFormValues)
+    }
 }

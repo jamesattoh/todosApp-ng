@@ -1,5 +1,10 @@
-import {Component, input} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+
+export type authentificationFormValuesType = {
+  email: string,
+  password: string,
+}
 
 @Component({
   selector: 'app-authentification',
@@ -12,6 +17,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 export class AuthentificationComponent {
   // rendons dynamique le titre du formulaire
   readonly formTitle = input.required<'Connexion' | 'Inscription'>();
+
+  readonly authentificationFormValues = output<authentificationFormValuesType>();
 
   protected passwordType: 'password' | 'text' = 'password';
 
@@ -26,6 +33,6 @@ export class AuthentificationComponent {
   }
 
   public submitAuthentificationForm(): void {
-    console.log('Submit Authentification');
+    this.authentificationFormValues.emit(this.authentificationForm.value as authentificationFormValuesType);
   }
 }
