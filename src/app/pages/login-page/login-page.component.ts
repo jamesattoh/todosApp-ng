@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  AuthentificationComponent,
-  authentificationFormValuesType
-} from '../../common/components/authentification/authentification.component';
+import { AuthentificationComponent } from '../../common/components/authentification/authentification.component';
+import {authentificationFormValuesType} from '../../common/components/authentification/types/authentification.type';
 
 @Component({
   selector: 'app-login-page',

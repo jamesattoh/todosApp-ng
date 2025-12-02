@@ -1,10 +1,6 @@
 import {Component, input, output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-
-export type authentificationFormValuesType = {
-  email: string,
-  password: string,
-}
+import {authentificationFormValuesType} from './types/authentification.type';
 
 @Component({
   selector: 'app-authentification',
