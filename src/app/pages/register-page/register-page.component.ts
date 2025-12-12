@@ -24,13 +24,14 @@ export class RegisterPageComponent {
     // il faut souscrire à l'observable httpClient afin qu'il puisse s'exécuter
     this.authentificationHttpService.register(authentificationFormValues).subscribe({
       next: (registrationResponse : RegisterResponseInterface) => {
-        console.log( 'Registration successful !',registrationResponse);
+        localStorage.setItem('access_token', registrationResponse.access_token); // récupération du token
+        //console.log( 'Registration successful !',registrationResponse);
         this.router.navigate(['/todos']);
       },
       error: (error : HttpErrorResponse) => {
-        console.log( 'Registration failed !',error );
+        //console.log( 'Registration failed !',error );
       },
-      complete: () => {console.log('Registration completed !')}
+      //complete: () => {console.log('Registration completed !')}
     });
   }
 }
