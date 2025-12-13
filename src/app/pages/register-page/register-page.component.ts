@@ -5,6 +5,7 @@ import {AuthentificationHttpService} from '../../common/services/authentificatio
 import {Router} from '@angular/router';
 import {RegisterResponseInterface} from '../../common/models/apis/register.api.interface';
 import {HttpErrorResponse} from '@angular/common/http';
+import {STORAGE_KEY} from '../../common/constants/storage.const';
 
 @Component({
   selector: 'app-register-page',
@@ -20,18 +21,17 @@ export class RegisterPageComponent {
   private readonly router =  inject(Router);
 
   public onRegister(authentificationFormValues : authentificationFormValuesType): void {
-    console.log(authentificationFormValues);
     // il faut souscrire à l'observable httpClient afin qu'il puisse s'exécuter
     this.authentificationHttpService.register(authentificationFormValues).subscribe({
       next: (registrationResponse : RegisterResponseInterface) => {
-        localStorage.setItem('access_token', registrationResponse.access_token); // récupération du token
+        localStorage.setItem(STORAGE_KEY.ACCESS_TOKEN, registrationResponse.access_token); // récupération du token
         //console.log( 'Registration successful !',registrationResponse);
         this.router.navigate(['/todos']);
       },
-      error: (error : HttpErrorResponse) => {
-        //console.log( 'Registration failed !',error );
-      },
-      //complete: () => {console.log('Registration completed !')}
+      // error: (error : HttpErrorResponse) => {
+      //   //console.log( 'Registration failed !',error );
+      // },
+      // //complete: () => {console.log('Registration completed !')}
     });
   }
 }
