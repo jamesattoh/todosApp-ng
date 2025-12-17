@@ -2,6 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {RegisterResponseInterface, RegistrationPayloadInterface} from '../../models/apis/register.api.interface';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root' //cet attribut indique à l'app que le service sera dispo dès le lancement de l'app
@@ -13,6 +14,6 @@ export class AuthentificationHttpService {
   private httpClient = inject(HttpClient);
 
   public register(registrationPayload: RegistrationPayloadInterface) : Observable<RegisterResponseInterface> {
-     return this.httpClient.post<RegisterResponseInterface>('http://95.111.253.41:8000/register', registrationPayload)
+     return this.httpClient.post<RegisterResponseInterface>(`${environment.baseUrl}/register`, registrationPayload)
   }
 }
